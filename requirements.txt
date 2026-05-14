@@ -1,0 +1,15 @@
+apache-airflow==2.8.1
+apache-airflow-providers-mysql==5.5.0
+pymysql==1.1.0
+pandas==2.1.4
+numpy==1.25.2
+pyarrow==14.0.2
+scikit-learn
+kafka-python==2.0.2
+requests==2.31.0
+matplotlib==3.8.2
+seaborn==0.12.2
+ydata-profiling==4.6.4
+ipywidgets==8.1.1
+jupyter==1.0.0
+python-dotenv==1.0.0
