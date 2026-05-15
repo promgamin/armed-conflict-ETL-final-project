@@ -1,0 +1,209 @@
+x-airflow-common: &airflow-common
+  build: .
+  environment:
+    AIRFLOW__CORE__EXECUTOR: LocalExecutor
+    AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: mysql+pymysql://airflow:airflow@mysql_airflow:3306/airflow
+    AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+    AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+    PYTHONPATH: /opt/airflow
+    KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+    KAFKA_TOPIC: armed_conflict_metrics
+  volumes:
+    - ./dag:/opt/airflow/dags
+    - ./scripts:/opt/airflow/scripts
+    - ./data:/opt/airflow/data
+    - ./logs:/opt/airflow/logs
+    - ./notebooks:/opt/airflow/notebooks
+    - ./streaming:/opt/airflow/streaming
+  depends_on:
+    mysql_airflow:
+      condition: service_healthy
+    mysql_dw:
+      condition: service_healthy
+    kafka:
+      condition: service_healthy
+  networks:
+    - etl_network
+
+services:
+  
+  # Airflow database
+  mysql_airflow:
+    image: mysql:8.0
+    container_name: mysql_airflow
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: airflow
+      MYSQL_USER: airflow
+      MYSQL_PASSWORD: airflow
+    volumes:
+      - mysql_airflow_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "airflow", "-pairflow"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+    networks:
+      - etl_network
+  
+# Datawarehouse
+  mysql_dw:
+    image: mysql:8.0
+    container_name: mysql_dw
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: dw_armed_conflict
+      MYSQL_USER: etl_user
+      MYSQL_PASSWORD: etl_password
+    ports:
+      - "3308:3306"
+    volumes:
+      - mysql_dw_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "etl_user", "-petl_password"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+    networks:
+      - etl_network
+
+# zookeeper
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    volumes:
+      - zookeeper_data:/var/lib/zookeeper/data
+      - zookeeper_logs:/var/lib/zookeeper/log
+    networks:
+      - etl_network
+
+# Kafka
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"       
+      - "9093:9093"       
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: INTERNAL://kafka:9092,EXTERNAL://localhost:9093
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+    volumes:
+      - kafka_data:/var/lib/kafka/data
+    healthcheck:
+      test: ["CMD", "kafka-broker-api-versions", "--bootstrap-server", "localhost:9092"]
+      interval: 15s
+      retries: 5
+      start_period: 45s
+    networks:
+      - etl_network
+
+# Airflow
+  airflow-init:
+    <<: *airflow-common
+    container_name: airflow_init
+    entrypoint: /bin/bash
+    command:
+      - -c
+      - |
+        airflow db migrate &&
+        airflow users create \
+          --username admin \
+          --firstname Admin \
+          --lastname ETL \
+          --role Admin \
+          --email admin@etl.com \
+          --password admin
+    restart: on-failure
+
+  airflow-webserver:
+    <<: *airflow-common
+    container_name: airflow_webserver
+    command: airflow webserver
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql_airflow:
+        condition: service_healthy
+      mysql_dw:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+    restart: always
+
+  airflow-scheduler:
+    <<: *airflow-common
+    container_name: airflow_scheduler
+    command: airflow scheduler
+    depends_on:
+      mysql_airflow:
+        condition: service_healthy
+      mysql_dw:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+    restart: always
+
+# Static dashboard with Metabase
+  metabase:
+    image: metabase/metabase:latest
+    container_name: metabase
+    ports:
+      - "3000:3000"
+    environment:
+      MB_DB_TYPE: h2
+      MB_DB_FILE: /metabase-data/metabase.db
+    volumes:
+      - metabase_data:/metabase-data
+    depends_on:
+      mysql_dw:
+        condition: service_healthy
+    networks:
+      - etl_network
+
+# Real-time dashboard with streamlit
+  streamlit:
+    image: python:3.11-slim
+    container_name: streamlit_dashboard
+    working_dir: /app
+    volumes:
+      - ./dashboard:/app
+    command: >
+      bash -c "pip install --no-cache-dir streamlit kafka-python pandas plotly &&
+               streamlit run app.py --server.port=8501 --server.address=0.0.0.0"
+    ports:
+      - "8501:8501"
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      KAFKA_TOPIC: armed_conflict_metrics
+    depends_on:
+      kafka:
+        condition: service_healthy
+    networks:
+      - etl_network
+    restart: always
+
+networks:
+  etl_network:
+    driver: bridge
+
+volumes:
+  mysql_airflow_data:
+  mysql_dw_data:
+  metabase_data:
+  zookeeper_data:
+  zookeeper_logs:
+  kafka_data:
