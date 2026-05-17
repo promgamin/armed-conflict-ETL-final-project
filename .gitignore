@@ -1,0 +1,21 @@
+# Logs de Airflow
+logs/
+
+# Datos crudos (pueden ser pesados)
+data/raw/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Entornos virtuales
+.env
+venv/
+
+# Checkpoints de Jupyter
+.ipynb_checkpoints/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db

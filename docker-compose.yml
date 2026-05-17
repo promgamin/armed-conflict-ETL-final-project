@@ -1,5 +1,8 @@
 x-airflow-common: &airflow-common
   build: .
+  dns:                   
+    - 8.8.8.8
+    - 8.8.4.4
   environment:
     AIRFLOW__CORE__EXECUTOR: LocalExecutor
     AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: mysql+pymysql://airflow:airflow@mysql_airflow:3306/airflow
@@ -15,6 +18,7 @@ x-airflow-common: &airflow-common
     - ./logs:/opt/airflow/logs
     - ./notebooks:/opt/airflow/notebooks
     - ./streaming:/opt/airflow/streaming
+    - ./great_expectations:/opt/airflow/great_expectations
   depends_on:
     mysql_airflow:
       condition: service_healthy

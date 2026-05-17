@@ -1,0 +1,1880 @@
+{
+  "data_asset_type": null,
+  "expectation_suite_name": "suite_dataset_final",
+  "expectations": [
+    {
+      "expectation_type": "expect_table_row_count_to_be_between",
+      "kwargs": {
+        "max_value": 100866,
+        "min_value": 100866
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {},
+            "metric_name": "table.row_count",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_table_columns_to_match_set",
+      "kwargs": {
+        "column_set": [
+          "total_victim",
+          "victimization_fact",
+          "age_range",
+          "date_processing",
+          "month",
+          "sex",
+          "source",
+          "year",
+          "ethnic_group",
+          "state_dept"
+        ],
+        "exact_match": null
+      },
+      "meta": {
+        "profiler_details": {
+          "success_ratio": 1.0
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "date_processing"
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "date_processing"
+            },
+            "metric_name": "column_values.nonnull.unexpected_count",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "year"
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "year"
+            },
+            "metric_name": "column_values.nonnull.unexpected_count",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "month"
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "month"
+            },
+            "metric_name": "column_values.nonnull.unexpected_count",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "state_dept"
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "state_dept"
+            },
+            "metric_name": "column_values.nonnull.unexpected_count",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "victimization_fact"
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "victimization_fact"
+            },
+            "metric_name": "column_values.nonnull.unexpected_count",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "sex"
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "sex"
+            },
+            "metric_name": "column_values.nonnull.unexpected_count",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "ethnic_group"
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "ethnic_group"
+            },
+            "metric_name": "column_values.nonnull.unexpected_count",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "age_range"
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "age_range"
+            },
+            "metric_name": "column_values.nonnull.unexpected_count",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "total_victim"
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "total_victim"
+            },
+            "metric_name": "column_values.nonnull.unexpected_count",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "source"
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "source"
+            },
+            "metric_name": "column_values.nonnull.unexpected_count",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_min_to_be_between",
+      "kwargs": {
+        "column": "year",
+        "max_value": 2012,
+        "min_value": 2012,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "year"
+            },
+            "metric_name": "column.min",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_max_to_be_between",
+      "kwargs": {
+        "column": "year",
+        "max_value": 2026,
+        "min_value": 2026,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "year"
+            },
+            "metric_name": "column.max",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "year",
+        "max_value": 2026,
+        "min_value": 2012,
+        "mostly": 1.0,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "column_max_values_range_estimator": {
+            "metric_configuration": {
+              "domain_kwargs": {
+                "column": "year"
+              },
+              "metric_name": "column.max",
+              "metric_value_kwargs": null
+            },
+            "num_batches": 1
+          },
+          "column_min_values_range_estimator": {
+            "metric_configuration": {
+              "domain_kwargs": {
+                "column": "year"
+              },
+              "metric_name": "column.min",
+              "metric_value_kwargs": null
+            },
+            "num_batches": 1
+          }
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_quantile_values_to_be_between",
+      "kwargs": {
+        "allow_relative_error": false,
+        "column": "year",
+        "quantile_ranges": {
+          "quantiles": [
+            0.25,
+            0.5,
+            0.75
+          ],
+          "value_ranges": [
+            [
+              2021,
+              2021
+            ],
+            [
+              2024,
+              2024
+            ],
+            [
+              2025,
+              2025
+            ]
+          ]
+        }
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "year"
+            },
+            "metric_name": "column.quantile_values",
+            "metric_value_kwargs": {
+              "allow_relative_error": false,
+              "quantiles": [
+                0.25,
+                0.5,
+                0.75
+              ]
+            }
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_median_to_be_between",
+      "kwargs": {
+        "column": "year",
+        "max_value": 2024.0,
+        "min_value": 2024.0,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "year"
+            },
+            "metric_name": "column.median",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_mean_to_be_between",
+      "kwargs": {
+        "column": "year",
+        "max_value": 2022.1748061784942,
+        "min_value": 2022.1748061784942,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "year"
+            },
+            "metric_name": "column.mean",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_stdev_to_be_between",
+      "kwargs": {
+        "column": "year",
+        "max_value": 4.161744723551913,
+        "min_value": 4.161744723551913,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "year"
+            },
+            "metric_name": "column.standard_deviation",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_min_to_be_between",
+      "kwargs": {
+        "column": "month",
+        "max_value": 1,
+        "min_value": 1,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "month"
+            },
+            "metric_name": "column.min",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_max_to_be_between",
+      "kwargs": {
+        "column": "month",
+        "max_value": 12,
+        "min_value": 12,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "month"
+            },
+            "metric_name": "column.max",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "month",
+        "max_value": 12,
+        "min_value": 1,
+        "mostly": 1.0,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "column_max_values_range_estimator": {
+            "metric_configuration": {
+              "domain_kwargs": {
+                "column": "month"
+              },
+              "metric_name": "column.max",
+              "metric_value_kwargs": null
+            },
+            "num_batches": 1
+          },
+          "column_min_values_range_estimator": {
+            "metric_configuration": {
+              "domain_kwargs": {
+                "column": "month"
+              },
+              "metric_name": "column.min",
+              "metric_value_kwargs": null
+            },
+            "num_batches": 1
+          }
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_quantile_values_to_be_between",
+      "kwargs": {
+        "allow_relative_error": false,
+        "column": "month",
+        "quantile_ranges": {
+          "quantiles": [
+            0.25,
+            0.5,
+            0.75
+          ],
+          "value_ranges": [
+            [
+              3,
+              3
+            ],
+            [
+              7,
+              7
+            ],
+            [
+              10,
+              10
+            ]
+          ]
+        }
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "month"
+            },
+            "metric_name": "column.quantile_values",
+            "metric_value_kwargs": {
+              "allow_relative_error": false,
+              "quantiles": [
+                0.25,
+                0.5,
+                0.75
+              ]
+            }
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_median_to_be_between",
+      "kwargs": {
+        "column": "month",
+        "max_value": 7.0,
+        "min_value": 7.0,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "month"
+            },
+            "metric_name": "column.median",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_mean_to_be_between",
+      "kwargs": {
+        "column": "month",
+        "max_value": 6.842801340392204,
+        "min_value": 6.842801340392204,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "month"
+            },
+            "metric_name": "column.mean",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_stdev_to_be_between",
+      "kwargs": {
+        "column": "month",
+        "max_value": 3.6149574129770903,
+        "min_value": 3.6149574129770903,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "month"
+            },
+            "metric_name": "column.standard_deviation",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_min_to_be_between",
+      "kwargs": {
+        "column": "total_victim",
+        "max_value": 0.0,
+        "min_value": 0.0,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "total_victim"
+            },
+            "metric_name": "column.min",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_max_to_be_between",
+      "kwargs": {
+        "column": "total_victim",
+        "max_value": 363427.0,
+        "min_value": 363427.0,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "total_victim"
+            },
+            "metric_name": "column.max",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "total_victim",
+        "max_value": 363427.0,
+        "min_value": 0.0,
+        "mostly": 1.0,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "column_max_values_range_estimator": {
+            "metric_configuration": {
+              "domain_kwargs": {
+                "column": "total_victim"
+              },
+              "metric_name": "column.max",
+              "metric_value_kwargs": null
+            },
+            "num_batches": 1
+          },
+          "column_min_values_range_estimator": {
+            "metric_configuration": {
+              "domain_kwargs": {
+                "column": "total_victim"
+              },
+              "metric_name": "column.min",
+              "metric_value_kwargs": null
+            },
+            "num_batches": 1
+          }
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_quantile_values_to_be_between",
+      "kwargs": {
+        "allow_relative_error": false,
+        "column": "total_victim",
+        "quantile_ranges": {
+          "quantiles": [
+            0.25,
+            0.5,
+            0.75
+          ],
+          "value_ranges": [
+            [
+              1.0,
+              1.0
+            ],
+            [
+              3.0,
+              3.0
+            ],
+            [
+              52.0,
+              52.0
+            ]
+          ]
+        }
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "total_victim"
+            },
+            "metric_name": "column.quantile_values",
+            "metric_value_kwargs": {
+              "allow_relative_error": false,
+              "quantiles": [
+                0.25,
+                0.5,
+                0.75
+              ]
+            }
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_median_to_be_between",
+      "kwargs": {
+        "column": "total_victim",
+        "max_value": 3.0,
+        "min_value": 3.0,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "total_victim"
+            },
+            "metric_name": "column.median",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_mean_to_be_between",
+      "kwargs": {
+        "column": "total_victim",
+        "max_value": 822.0446037316837,
+        "min_value": 822.0446037316837,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "total_victim"
+            },
+            "metric_name": "column.mean",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_stdev_to_be_between",
+      "kwargs": {
+        "column": "total_victim",
+        "max_value": 4607.968213787993,
+        "min_value": 4607.968213787993,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "total_victim"
+            },
+            "metric_name": "column.standard_deviation",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_min_to_be_between",
+      "kwargs": {
+        "column": "date_processing",
+        "max_value": "2012-06-05T00:00:00",
+        "min_value": "2012-06-05T00:00:00",
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "date_processing"
+            },
+            "metric_name": "column.min",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_max_to_be_between",
+      "kwargs": {
+        "column": "date_processing",
+        "max_value": "2026-03-31T00:00:00",
+        "min_value": "2026-03-31T00:00:00",
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "date_processing"
+            },
+            "metric_name": "column.max",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "date_processing",
+        "max_value": "2026-03-31T00:00:00",
+        "min_value": "2012-06-05T00:00:00",
+        "mostly": 1.0,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "column_max_values_range_estimator": {
+            "metric_configuration": {
+              "domain_kwargs": {
+                "column": "date_processing"
+              },
+              "metric_name": "column.max",
+              "metric_value_kwargs": null
+            },
+            "num_batches": 1
+          },
+          "column_min_values_range_estimator": {
+            "metric_configuration": {
+              "domain_kwargs": {
+                "column": "date_processing"
+              },
+              "metric_name": "column.min",
+              "metric_value_kwargs": null
+            },
+            "num_batches": 1
+          }
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_value_lengths_to_be_between",
+      "kwargs": {
+        "column": "state_dept",
+        "max_value": 18,
+        "min_value": 4,
+        "mostly": 1.0,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "column_max_length_range_estimator": {
+            "metric_configuration": {
+              "domain_kwargs": {
+                "column": "state_dept"
+              },
+              "metric_name": "column_values.length.max",
+              "metric_value_kwargs": null
+            },
+            "num_batches": 1
+          },
+          "column_min_length_range_estimator": {
+            "metric_configuration": {
+              "domain_kwargs": {
+                "column": "state_dept"
+              },
+              "metric_name": "column_values.length.min",
+              "metric_value_kwargs": null
+            },
+            "num_batches": 1
+          }
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_match_regex",
+      "kwargs": {
+        "column": "state_dept",
+        "mostly": 1.0,
+        "regex": "[A-Za-z0-9\\.,;:!?()\\\"'%\\-]+"
+      },
+      "meta": {
+        "profiler_details": {
+          "evaluated_regexes": {
+            "(?:25[0-5]|2[0-4]\\d|[01]\\d{2}|\\d{1,2})(?:.(?:25[0-5]|2[0-4]\\d|[01]\\d{2}|\\d{1,2})){3}": 0.0,
+            "-?\\d+": 0.0,
+            "-?\\d+(?:\\.\\d*)?": 0.0,
+            "<\\/?(?:p|a|b|img)(?: \\/)?>": 0.0,
+            "[A-Za-z0-9\\.,;:!?()\\\"'%\\-]+": 1.0,
+            "\\b[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}-[0-5][0-9a-fA-F]{3}-[089ab][0-9a-fA-F]{3}-\\b[0-9a-fA-F]{12}\\b ": 0.0,
+            "\\d+": 0.0,
+            "\\s+$": 0.0,
+            "^\\s+": 0.0,
+            "https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,255}\\.[a-z]{2,6}\\b(?:[-a-zA-Z0-9@:%_\\+.~#()?&//=]*)": 0.0
+          },
+          "success_ratio": 1.0
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_value_lengths_to_be_between",
+      "kwargs": {
+        "column": "victimization_fact",
+        "max_value": 87,
+        "min_value": 7,
+        "mostly": 1.0,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "column_max_length_range_estimator": {
+            "metric_configuration": {
+              "domain_kwargs": {
+                "column": "victimization_fact"
+              },
+              "metric_name": "column_values.length.max",
+              "metric_value_kwargs": null
+            },
+            "num_batches": 1
+          },
+          "column_min_length_range_estimator": {
+            "metric_configuration": {
+              "domain_kwargs": {
+                "column": "victimization_fact"
+              },
+              "metric_name": "column_values.length.min",
+              "metric_value_kwargs": null
+            },
+            "num_batches": 1
+          }
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_match_regex",
+      "kwargs": {
+        "column": "victimization_fact",
+        "mostly": 1.0,
+        "regex": "[A-Za-z0-9\\.,;:!?()\\\"'%\\-]+"
+      },
+      "meta": {
+        "profiler_details": {
+          "evaluated_regexes": {
+            "(?:25[0-5]|2[0-4]\\d|[01]\\d{2}|\\d{1,2})(?:.(?:25[0-5]|2[0-4]\\d|[01]\\d{2}|\\d{1,2})){3}": 0.0,
+            "-?\\d+": 0.0,
+            "-?\\d+(?:\\.\\d*)?": 0.0,
+            "<\\/?(?:p|a|b|img)(?: \\/)?>": 0.0,
+            "[A-Za-z0-9\\.,;:!?()\\\"'%\\-]+": 1.0,
+            "\\b[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}-[0-5][0-9a-fA-F]{3}-[089ab][0-9a-fA-F]{3}-\\b[0-9a-fA-F]{12}\\b ": 0.0,
+            "\\d+": 0.0,
+            "\\s+$": 0.0,
+            "^\\s+": 0.0,
+            "https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,255}\\.[a-z]{2,6}\\b(?:[-a-zA-Z0-9@:%_\\+.~#()?&//=]*)": 0.0
+          },
+          "success_ratio": 1.0
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_value_lengths_to_be_between",
+      "kwargs": {
+        "column": "sex",
+        "max_value": 15,
+        "min_value": 5,
+        "mostly": 1.0,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "column_max_length_range_estimator": {
+            "metric_configuration": {
+              "domain_kwargs": {
+                "column": "sex"
+              },
+              "metric_name": "column_values.length.max",
+              "metric_value_kwargs": null
+            },
+            "num_batches": 1
+          },
+          "column_min_length_range_estimator": {
+            "metric_configuration": {
+              "domain_kwargs": {
+                "column": "sex"
+              },
+              "metric_name": "column_values.length.min",
+              "metric_value_kwargs": null
+            },
+            "num_batches": 1
+          }
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_match_regex",
+      "kwargs": {
+        "column": "sex",
+        "mostly": 1.0,
+        "regex": "[A-Za-z0-9\\.,;:!?()\\\"'%\\-]+"
+      },
+      "meta": {
+        "profiler_details": {
+          "evaluated_regexes": {
+            "(?:25[0-5]|2[0-4]\\d|[01]\\d{2}|\\d{1,2})(?:.(?:25[0-5]|2[0-4]\\d|[01]\\d{2}|\\d{1,2})){3}": 0.0,
+            "-?\\d+": 0.0,
+            "-?\\d+(?:\\.\\d*)?": 0.0,
+            "<\\/?(?:p|a|b|img)(?: \\/)?>": 0.0,
+            "[A-Za-z0-9\\.,;:!?()\\\"'%\\-]+": 1.0,
+            "\\b[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}-[0-5][0-9a-fA-F]{3}-[089ab][0-9a-fA-F]{3}-\\b[0-9a-fA-F]{12}\\b ": 0.0,
+            "\\d+": 0.0,
+            "\\s+$": 0.0,
+            "^\\s+": 0.0,
+            "https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,255}\\.[a-z]{2,6}\\b(?:[-a-zA-Z0-9@:%_\\+.~#()?&//=]*)": 0.0
+          },
+          "success_ratio": 1.0
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_value_lengths_to_be_between",
+      "kwargs": {
+        "column": "ethnic_group",
+        "max_value": 14,
+        "min_value": 3,
+        "mostly": 1.0,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "column_max_length_range_estimator": {
+            "metric_configuration": {
+              "domain_kwargs": {
+                "column": "ethnic_group"
+              },
+              "metric_name": "column_values.length.max",
+              "metric_value_kwargs": null
+            },
+            "num_batches": 1
+          },
+          "column_min_length_range_estimator": {
+            "metric_configuration": {
+              "domain_kwargs": {
+                "column": "ethnic_group"
+              },
+              "metric_name": "column_values.length.min",
+              "metric_value_kwargs": null
+            },
+            "num_batches": 1
+          }
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_match_regex",
+      "kwargs": {
+        "column": "ethnic_group",
+        "mostly": 1.0,
+        "regex": "[A-Za-z0-9\\.,;:!?()\\\"'%\\-]+"
+      },
+      "meta": {
+        "profiler_details": {
+          "evaluated_regexes": {
+            "(?:25[0-5]|2[0-4]\\d|[01]\\d{2}|\\d{1,2})(?:.(?:25[0-5]|2[0-4]\\d|[01]\\d{2}|\\d{1,2})){3}": 0.0,
+            "-?\\d+": 0.0,
+            "-?\\d+(?:\\.\\d*)?": 0.0,
+            "<\\/?(?:p|a|b|img)(?: \\/)?>": 0.0,
+            "[A-Za-z0-9\\.,;:!?()\\\"'%\\-]+": 1.0,
+            "\\b[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}-[0-5][0-9a-fA-F]{3}-[089ab][0-9a-fA-F]{3}-\\b[0-9a-fA-F]{12}\\b ": 0.0,
+            "\\d+": 0.0,
+            "\\s+$": 0.0,
+            "^\\s+": 0.0,
+            "https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,255}\\.[a-z]{2,6}\\b(?:[-a-zA-Z0-9@:%_\\+.~#()?&//=]*)": 0.0
+          },
+          "success_ratio": 1.0
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_value_lengths_to_be_between",
+      "kwargs": {
+        "column": "age_range",
+        "max_value": 15,
+        "min_value": 3,
+        "mostly": 1.0,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "column_max_length_range_estimator": {
+            "metric_configuration": {
+              "domain_kwargs": {
+                "column": "age_range"
+              },
+              "metric_name": "column_values.length.max",
+              "metric_value_kwargs": null
+            },
+            "num_batches": 1
+          },
+          "column_min_length_range_estimator": {
+            "metric_configuration": {
+              "domain_kwargs": {
+                "column": "age_range"
+              },
+              "metric_name": "column_values.length.min",
+              "metric_value_kwargs": null
+            },
+            "num_batches": 1
+          }
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_match_regex",
+      "kwargs": {
+        "column": "age_range",
+        "mostly": 1.0,
+        "regex": "[A-Za-z0-9\\.,;:!?()\\\"'%\\-]+"
+      },
+      "meta": {
+        "profiler_details": {
+          "evaluated_regexes": {
+            "(?:25[0-5]|2[0-4]\\d|[01]\\d{2}|\\d{1,2})(?:.(?:25[0-5]|2[0-4]\\d|[01]\\d{2}|\\d{1,2})){3}": 0.0,
+            "-?\\d+": 0.9425376241746476,
+            "-?\\d+(?:\\.\\d*)?": 0.9425376241746476,
+            "<\\/?(?:p|a|b|img)(?: \\/)?>": 0.0,
+            "[A-Za-z0-9\\.,;:!?()\\\"'%\\-]+": 1.0,
+            "\\b[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}-[0-5][0-9a-fA-F]{3}-[089ab][0-9a-fA-F]{3}-\\b[0-9a-fA-F]{12}\\b ": 0.0,
+            "\\d+": 0.9425376241746476,
+            "\\s+$": 0.0,
+            "^\\s+": 0.0,
+            "https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,255}\\.[a-z]{2,6}\\b(?:[-a-zA-Z0-9@:%_\\+.~#()?&//=]*)": 0.0
+          },
+          "success_ratio": 1.0
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_value_lengths_to_be_between",
+      "kwargs": {
+        "column": "source",
+        "max_value": 19,
+        "min_value": 4,
+        "mostly": 1.0,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "column_max_length_range_estimator": {
+            "metric_configuration": {
+              "domain_kwargs": {
+                "column": "source"
+              },
+              "metric_name": "column_values.length.max",
+              "metric_value_kwargs": null
+            },
+            "num_batches": 1
+          },
+          "column_min_length_range_estimator": {
+            "metric_configuration": {
+              "domain_kwargs": {
+                "column": "source"
+              },
+              "metric_name": "column_values.length.min",
+              "metric_value_kwargs": null
+            },
+            "num_batches": 1
+          }
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_match_regex",
+      "kwargs": {
+        "column": "source",
+        "mostly": 1.0,
+        "regex": "[A-Za-z0-9\\.,;:!?()\\\"'%\\-]+"
+      },
+      "meta": {
+        "profiler_details": {
+          "evaluated_regexes": {
+            "(?:25[0-5]|2[0-4]\\d|[01]\\d{2}|\\d{1,2})(?:.(?:25[0-5]|2[0-4]\\d|[01]\\d{2}|\\d{1,2})){3}": 0.0,
+            "-?\\d+": 0.0,
+            "-?\\d+(?:\\.\\d*)?": 0.0,
+            "<\\/?(?:p|a|b|img)(?: \\/)?>": 0.0,
+            "[A-Za-z0-9\\.,;:!?()\\\"'%\\-]+": 1.0,
+            "\\b[0-9a-fA-F]{8}\\b-[0-9a-fA-F]{4}-[0-5][0-9a-fA-F]{3}-[089ab][0-9a-fA-F]{3}-\\b[0-9a-fA-F]{12}\\b ": 0.0,
+            "\\d+": 0.0,
+            "\\s+$": 0.0,
+            "^\\s+": 0.0,
+            "https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{2,255}\\.[a-z]{2,6}\\b(?:[-a-zA-Z0-9@:%_\\+.~#()?&//=]*)": 0.0
+          },
+          "success_ratio": 1.0
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "year",
+        "mostly": 1.0,
+        "value_set": [
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025,
+          2026,
+          2012,
+          2013,
+          2014,
+          2015
+        ]
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "year"
+            },
+            "metric_name": "column.distinct_values",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1,
+          "parse_strings_as_datetimes": false
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_unique_value_count_to_be_between",
+      "kwargs": {
+        "column": "year",
+        "max_value": 15,
+        "min_value": 15,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "year"
+            },
+            "metric_name": "column.distinct_values.count",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_proportion_of_unique_values_to_be_between",
+      "kwargs": {
+        "column": "year",
+        "max_value": 0.0001487121527571233,
+        "min_value": 0.0001487121527571233,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "year"
+            },
+            "metric_name": "column.unique_proportion",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "month",
+        "mostly": 1.0,
+        "value_set": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "month"
+            },
+            "metric_name": "column.distinct_values",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1,
+          "parse_strings_as_datetimes": false
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_unique_value_count_to_be_between",
+      "kwargs": {
+        "column": "month",
+        "max_value": 12,
+        "min_value": 12,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "month"
+            },
+            "metric_name": "column.distinct_values.count",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_proportion_of_unique_values_to_be_between",
+      "kwargs": {
+        "column": "month",
+        "max_value": 0.00011896972220569865,
+        "min_value": 0.00011896972220569865,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "month"
+            },
+            "metric_name": "column.unique_proportion",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "state_dept",
+        "mostly": 1.0,
+        "value_set": [
+          "bogota, d.c.",
+          "magdalena",
+          "cesar",
+          "norte de santander",
+          "sucre",
+          "cauca",
+          "risaralda",
+          "cundinamarca",
+          "caldas",
+          "tolima",
+          "vaupes",
+          "bolivar",
+          "antioquia",
+          "guaviare",
+          "huila",
+          "santander",
+          "atlantico",
+          "guainia",
+          "meta",
+          "cordoba",
+          "valle del cauca",
+          "caqueta",
+          "choco",
+          "narino",
+          "sin informacion",
+          "amazonas",
+          "boyaca",
+          "la guajira",
+          "quindio",
+          "putumayo",
+          "vichada",
+          "casanare",
+          "arauca"
+        ]
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "state_dept"
+            },
+            "metric_name": "column.distinct_values",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1,
+          "parse_strings_as_datetimes": false
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_unique_value_count_to_be_between",
+      "kwargs": {
+        "column": "state_dept",
+        "max_value": 33,
+        "min_value": 33,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "state_dept"
+            },
+            "metric_name": "column.distinct_values.count",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_proportion_of_unique_values_to_be_between",
+      "kwargs": {
+        "column": "state_dept",
+        "max_value": 0.0003271667360656713,
+        "min_value": 0.0003271667360656713,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "state_dept"
+            },
+            "metric_name": "column.unique_proportion",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "victimization_fact",
+        "mostly": 1.0,
+        "value_set": [
+          "delitos contra la libertad y la integridad sexual en desarrollo del conflicto armado",
+          "abandono o despojo forzado de tierras",
+          "eventos masivos",
+          "acto terrorista/atentados/combates/enfrentamientos/hostigamientos",
+          "desplazamiento forzado",
+          "secuestro",
+          "desaparicion forzada",
+          "amenaza",
+          "sin informacion",
+          "vinculacion de ninos ninas y adolescentes a actividades relacionadas con grupos armados",
+          "lesiones personales y psicologicas que produzcan o no incapacidad permanente",
+          "homicidio",
+          "perdida de bienes muebles o inmuebles"
+        ]
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "victimization_fact"
+            },
+            "metric_name": "column.distinct_values",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1,
+          "parse_strings_as_datetimes": false
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_unique_value_count_to_be_between",
+      "kwargs": {
+        "column": "victimization_fact",
+        "max_value": 13,
+        "min_value": 13,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "victimization_fact"
+            },
+            "metric_name": "column.distinct_values.count",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_proportion_of_unique_values_to_be_between",
+      "kwargs": {
+        "column": "victimization_fact",
+        "max_value": 0.0001288838657228402,
+        "min_value": 0.0001288838657228402,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "victimization_fact"
+            },
+            "metric_name": "column.unique_proportion",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "sex",
+        "mostly": 1.0,
+        "value_set": [
+          "lgbti",
+          "hombre",
+          "mujer",
+          "sin informacion",
+          "intersexual"
+        ]
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "sex"
+            },
+            "metric_name": "column.distinct_values",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1,
+          "parse_strings_as_datetimes": false
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_unique_value_count_to_be_between",
+      "kwargs": {
+        "column": "sex",
+        "max_value": 5,
+        "min_value": 5,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "sex"
+            },
+            "metric_name": "column.distinct_values.count",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_proportion_of_unique_values_to_be_between",
+      "kwargs": {
+        "column": "sex",
+        "max_value": 4.957071758570777e-05,
+        "min_value": 4.957071758570777e-05,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "sex"
+            },
+            "metric_name": "column.unique_proportion",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "ethnic_group",
+        "mostly": 1.0,
+        "value_set": [
+          "palenquero",
+          "otro",
+          "afrocolombiano",
+          "rom",
+          "indigena",
+          "ninguna",
+          "mestizo",
+          "raizal"
+        ]
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "ethnic_group"
+            },
+            "metric_name": "column.distinct_values",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1,
+          "parse_strings_as_datetimes": false
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_unique_value_count_to_be_between",
+      "kwargs": {
+        "column": "ethnic_group",
+        "max_value": 8,
+        "min_value": 8,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "ethnic_group"
+            },
+            "metric_name": "column.distinct_values.count",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_proportion_of_unique_values_to_be_between",
+      "kwargs": {
+        "column": "ethnic_group",
+        "max_value": 7.931314813713243e-05,
+        "min_value": 7.931314813713243e-05,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "ethnic_group"
+            },
+            "metric_name": "column.unique_proportion",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "age_range",
+        "mostly": 1.0,
+        "value_set": [
+          "12-17",
+          "60+",
+          "27-59",
+          "6-11",
+          "0-5",
+          "29-60",
+          "0-13",
+          "14-26",
+          "29-59",
+          "18-28",
+          "sin informacion",
+          "61-100",
+          "60-110"
+        ]
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "age_range"
+            },
+            "metric_name": "column.distinct_values",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1,
+          "parse_strings_as_datetimes": false
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_unique_value_count_to_be_between",
+      "kwargs": {
+        "column": "age_range",
+        "max_value": 13,
+        "min_value": 13,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "age_range"
+            },
+            "metric_name": "column.distinct_values.count",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_proportion_of_unique_values_to_be_between",
+      "kwargs": {
+        "column": "age_range",
+        "max_value": 0.0001288838657228402,
+        "min_value": 0.0001288838657228402,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "age_range"
+            },
+            "metric_name": "column.unique_proportion",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "source",
+        "mostly": 1.0,
+        "value_set": [
+          "nacional (colombia)",
+          "cali"
+        ]
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "source"
+            },
+            "metric_name": "column.distinct_values",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1,
+          "parse_strings_as_datetimes": false
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_unique_value_count_to_be_between",
+      "kwargs": {
+        "column": "source",
+        "max_value": 2,
+        "min_value": 2,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "source"
+            },
+            "metric_name": "column.distinct_values.count",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    },
+    {
+      "expectation_type": "expect_column_proportion_of_unique_values_to_be_between",
+      "kwargs": {
+        "column": "source",
+        "max_value": 1.982828703428311e-05,
+        "min_value": 1.982828703428311e-05,
+        "strict_max": false,
+        "strict_min": false
+      },
+      "meta": {
+        "profiler_details": {
+          "metric_configuration": {
+            "domain_kwargs": {
+              "column": "source"
+            },
+            "metric_name": "column.unique_proportion",
+            "metric_value_kwargs": null
+          },
+          "num_batches": 1
+        }
+      }
+    }
+  ],
+  "ge_cloud_id": null,
+  "meta": {
+    "citations": [
+      {
+        "citation_date": "2026-05-17T03:35:29.442263Z",
+        "comment": "Created by effective Rule-Based Profiler of OnboardingDataAssistant with the configuration included.\n"
+      }
+    ],
+    "great_expectations_version": "0.17.23"
+  }
+}

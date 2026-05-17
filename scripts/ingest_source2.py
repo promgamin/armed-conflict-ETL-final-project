@@ -3,7 +3,7 @@ import pandas as pd
 import requests
 import os
 
-def ingest_source3(url, start_year, output_path):
+def ingest_source2(url, start_year, output_path):
     """
     Ingest records from an API and saves them as a parquet file 
 
@@ -12,7 +12,7 @@ def ingest_source3(url, start_year, output_path):
     (year >= start_year) and sorts them in descending order by year. The loop continues
     until the API returns an empty page or a partial page (with fewer rows than the
     page size), indicating that all available records have been retrieved.
-    Label each row with "source3_api_displacement" for traceability and write
+    Label each row with "source2_api_displacement" for traceability and write
     the accumulated result to `output_path` in Parquet format.
 
     Args:
@@ -52,9 +52,9 @@ def ingest_source3(url, start_year, output_path):
         offset += page_size
 
     df = pd.DataFrame(all_records)
-    df["source"] = "source3_api_displacement"
+    df["source"] = "source2_api_displacement"
 
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     df.to_parquet(output_path, index=False)
 
-    print(f"Source 3 ingested: {len(df)} records")
+    print(f"Source 2 ingested: {len(df)} records")

@@ -268,7 +268,7 @@ def cast_categories(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def transform_source3(input_path: str, output_path: str):
+def transform_source2(input_path: str, output_path: str):
     """
      The function loads a parquet file, normalizes column names and values,
     standardizes key variables, prepares the data for aggregation, performs
@@ -282,7 +282,7 @@ def transform_source3(input_path: str, output_path: str):
     Returns:
         None
     """
-    print("Loading source 3...")
+    print("Loading source 2...")
     df = pd.read_parquet(input_path)
     print(f"Rows before transform: {len(df)}")
 
