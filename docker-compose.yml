@@ -17,7 +17,7 @@ x-airflow-common: &airflow-common
     - ./data:/opt/airflow/data
     - ./logs:/opt/airflow/logs
     - ./notebooks:/opt/airflow/notebooks
-    - ./streaming:/opt/airflow/streaming
+    - ./kafka_streaming:/opt/airflow/kafka_streaming
     - ./great_expectations:/opt/airflow/great_expectations
   depends_on:
     mysql_airflow:
@@ -81,18 +81,25 @@ services:
     volumes:
       - zookeeper_data:/var/lib/zookeeper/data
       - zookeeper_logs:/var/lib/zookeeper/log
+    healthcheck:
+      test: ["CMD-SHELL", "echo srvr | nc localhost 2181 | grep -q Mode"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
     networks:
       - etl_network
-
-# Kafka
+      
+#Kafka   
   kafka:
     image: confluentinc/cp-kafka:7.5.0
     container_name: kafka
     depends_on:
-      - zookeeper
+      zookeeper:
+        condition: service_healthy   
     ports:
-      - "9092:9092"       
-      - "9093:9093"       
+      - "9092:9092"
+      - "9093:9093"
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
@@ -101,6 +108,8 @@ services:
       KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+      KAFKA_ZOOKEEPER_SESSION_TIMEOUT_MS: 60000      
+      KAFKA_ZOOKEEPER_CONNECTION_TIMEOUT_MS: 60000   
     volumes:
       - kafka_data:/var/lib/kafka/data
     healthcheck:
@@ -184,15 +193,16 @@ services:
     container_name: streamlit_dashboard
     working_dir: /app
     volumes:
-      - ./dashboard:/app
+      - .:/app
     command: >
-      bash -c "pip install --no-cache-dir streamlit kafka-python pandas plotly &&
-               streamlit run app.py --server.port=8501 --server.address=0.0.0.0"
+      bash -c "pip install --no-cache-dir streamlit kafka-python pandas plotly mysql-connector-python &&
+              streamlit run kafka_streaming/visualization_streamlit.py --server.port=8501 --server.address=0.0.0.0"
     ports:
       - "8501:8501"
     environment:
       KAFKA_BOOTSTRAP_SERVERS: kafka:9092
       KAFKA_TOPIC: armed_conflict_metrics
+      KAFKA_GROUP_ID: armed_conflict_group
     depends_on:
       kafka:
         condition: service_healthy

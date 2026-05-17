@@ -23,16 +23,16 @@
       "expectation_type": "expect_table_columns_to_match_set",
       "kwargs": {
         "column_set": [
-          "total_victim",
-          "victimization_fact",
-          "age_range",
-          "date_processing",
-          "month",
-          "sex",
-          "source",
           "year",
+          "month",
+          "source",
+          "total_victim",
+          "date_processing",
+          "sex",
+          "age_range",
+          "state_dept",
           "ethnic_group",
-          "state_dept"
+          "victimization_fact"
         ],
         "exact_match": null
       },
@@ -1402,39 +1402,39 @@
         "column": "state_dept",
         "mostly": 1.0,
         "value_set": [
-          "bogota, d.c.",
-          "magdalena",
-          "cesar",
-          "norte de santander",
-          "sucre",
-          "cauca",
+          "boyaca",
+          "quindio",
           "risaralda",
-          "cundinamarca",
-          "caldas",
-          "tolima",
-          "vaupes",
-          "bolivar",
-          "antioquia",
-          "guaviare",
-          "huila",
           "santander",
-          "atlantico",
-          "guainia",
-          "meta",
-          "cordoba",
-          "valle del cauca",
           "caqueta",
           "choco",
-          "narino",
+          "cundinamarca",
+          "guaviare",
+          "guainia",
+          "arauca",
+          "magdalena",
+          "tolima",
+          "huila",
           "sin informacion",
+          "bogota, d.c.",
+          "cesar",
+          "vaupes",
+          "cauca",
+          "bolivar",
+          "atlantico",
+          "valle del cauca",
           "amazonas",
-          "boyaca",
           "la guajira",
-          "quindio",
+          "antioquia",
           "putumayo",
-          "vichada",
+          "narino",
+          "sucre",
           "casanare",
-          "arauca"
+          "cordoba",
+          "meta",
+          "vichada",
+          "norte de santander",
+          "caldas"
         ]
       },
       "meta": {
@@ -1501,18 +1501,18 @@
         "column": "victimization_fact",
         "mostly": 1.0,
         "value_set": [
-          "delitos contra la libertad y la integridad sexual en desarrollo del conflicto armado",
-          "abandono o despojo forzado de tierras",
-          "eventos masivos",
-          "acto terrorista/atentados/combates/enfrentamientos/hostigamientos",
-          "desplazamiento forzado",
-          "secuestro",
-          "desaparicion forzada",
-          "amenaza",
           "sin informacion",
-          "vinculacion de ninos ninas y adolescentes a actividades relacionadas con grupos armados",
-          "lesiones personales y psicologicas que produzcan o no incapacidad permanente",
+          "secuestro",
+          "desplazamiento forzado",
+          "acto terrorista/atentados/combates/enfrentamientos/hostigamientos",
           "homicidio",
+          "vinculacion de ninos ninas y adolescentes a actividades relacionadas con grupos armados",
+          "amenaza",
+          "desaparicion forzada",
+          "abandono o despojo forzado de tierras",
+          "lesiones personales y psicologicas que produzcan o no incapacidad permanente",
+          "eventos masivos",
+          "delitos contra la libertad y la integridad sexual en desarrollo del conflicto armado",
           "perdida de bienes muebles o inmuebles"
         ]
       },
@@ -1580,11 +1580,11 @@
         "column": "sex",
         "mostly": 1.0,
         "value_set": [
-          "lgbti",
-          "hombre",
-          "mujer",
           "sin informacion",
-          "intersexual"
+          "lgbti",
+          "mujer",
+          "intersexual",
+          "hombre"
         ]
       },
       "meta": {
@@ -1651,14 +1651,14 @@
         "column": "ethnic_group",
         "mostly": 1.0,
         "value_set": [
-          "palenquero",
+          "ninguna",
           "otro",
-          "afrocolombiano",
           "rom",
           "indigena",
-          "ninguna",
-          "mestizo",
-          "raizal"
+          "afrocolombiano",
+          "raizal",
+          "palenquero",
+          "mestizo"
         ]
       },
       "meta": {
@@ -1725,19 +1725,19 @@
         "column": "age_range",
         "mostly": 1.0,
         "value_set": [
-          "12-17",
-          "60+",
-          "27-59",
-          "6-11",
-          "0-5",
-          "29-60",
-          "0-13",
           "14-26",
-          "29-59",
-          "18-28",
           "sin informacion",
+          "6-11",
+          "29-60",
+          "0-5",
+          "60+",
+          "18-28",
+          "29-59",
           "61-100",
-          "60-110"
+          "27-59",
+          "0-13",
+          "60-110",
+          "12-17"
         ]
       },
       "meta": {
@@ -1871,7 +1871,7 @@
   "meta": {
     "citations": [
       {
-        "citation_date": "2026-05-17T03:35:29.442263Z",
+        "citation_date": "2026-05-17T18:34:15.056633Z",
         "comment": "Created by effective Rule-Based Profiler of OnboardingDataAssistant with the configuration included.\n"
       }
     ],

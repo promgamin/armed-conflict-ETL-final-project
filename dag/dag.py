@@ -9,6 +9,7 @@ from scripts.concat_sources import run_concat
 from scripts.validate import validate_all
 from scripts.dimensions import build_dimensions
 from scripts.load import load_to_mysql
+from kafka_streaming.producer import run
 
 default_args = {
     "retries": 2,
@@ -106,6 +107,16 @@ with DAG(
             "processed_dir": "/opt/airflow/data/processed",
         },
     )
+
+# Kafka
+    task_kafka=PythonOperator(
+        task_id="kafka_streaming",
+        python_callable=run,
+        op_kwargs={
+            "delay": 0.006,
+            "batch_size": 200,
+        },
+    )
     
 
 # Workflow 
@@ -114,4 +125,4 @@ with DAG(
     task_ingest_f2 >> task_transform_f2
 
     [task_transform_f1, task_transform_f2] >> task_concat
-    task_concat >> task_validate >> task_dimensions >> task_load
+    task_concat >> task_validate >> task_dimensions >> task_load >> task_kafka
