@@ -113,8 +113,8 @@ with DAG(
         task_id="kafka_streaming",
         python_callable=run,
         op_kwargs={
-            "delay": 0.006,
-            "batch_size": 200,
+            "delay": 0.001,
+            "batch_size": 500,
         },
     )
     

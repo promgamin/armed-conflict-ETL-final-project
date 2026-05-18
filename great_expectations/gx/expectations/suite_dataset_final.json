@@ -23,16 +23,16 @@
       "expectation_type": "expect_table_columns_to_match_set",
       "kwargs": {
         "column_set": [
-          "year",
-          "month",
-          "source",
-          "total_victim",
-          "date_processing",
+          "ethnic_group",
           "sex",
           "age_range",
-          "state_dept",
-          "ethnic_group",
-          "victimization_fact"
+          "month",
+          "year",
+          "total_victim",
+          "date_processing",
+          "source",
+          "victimization_fact",
+          "state_dept"
         ],
         "exact_match": null
       },
@@ -1402,39 +1402,39 @@
         "column": "state_dept",
         "mostly": 1.0,
         "value_set": [
-          "boyaca",
-          "quindio",
-          "risaralda",
-          "santander",
-          "caqueta",
+          "arauca",
+          "sin informacion",
+          "cauca",
+          "cordoba",
+          "bolivar",
           "choco",
-          "cundinamarca",
+          "vaupes",
+          "narino",
+          "vichada",
+          "amazonas",
+          "sucre",
+          "huila",
+          "risaralda",
+          "atlantico",
+          "caldas",
+          "valle del cauca",
+          "quindio",
+          "bogota, d.c.",
+          "meta",
+          "la guajira",
+          "cesar",
           "guaviare",
           "guainia",
-          "arauca",
+          "caqueta",
           "magdalena",
-          "tolima",
-          "huila",
-          "sin informacion",
-          "bogota, d.c.",
-          "cesar",
-          "vaupes",
-          "cauca",
-          "bolivar",
-          "atlantico",
-          "valle del cauca",
-          "amazonas",
-          "la guajira",
           "antioquia",
           "putumayo",
-          "narino",
-          "sucre",
-          "casanare",
-          "cordoba",
-          "meta",
-          "vichada",
           "norte de santander",
-          "caldas"
+          "santander",
+          "cundinamarca",
+          "tolima",
+          "casanare",
+          "boyaca"
         ]
       },
       "meta": {
@@ -1501,19 +1501,19 @@
         "column": "victimization_fact",
         "mostly": 1.0,
         "value_set": [
+          "eventos masivos",
+          "perdida de bienes muebles o inmuebles",
+          "abandono o despojo forzado de tierras",
+          "amenaza",
           "sin informacion",
-          "secuestro",
+          "homicidio",
+          "lesiones personales y psicologicas que produzcan o no incapacidad permanente",
+          "desaparicion forzada",
+          "vinculacion de ninos ninas y adolescentes a actividades relacionadas con grupos armados",
           "desplazamiento forzado",
           "acto terrorista/atentados/combates/enfrentamientos/hostigamientos",
-          "homicidio",
-          "vinculacion de ninos ninas y adolescentes a actividades relacionadas con grupos armados",
-          "amenaza",
-          "desaparicion forzada",
-          "abandono o despojo forzado de tierras",
-          "lesiones personales y psicologicas que produzcan o no incapacidad permanente",
-          "eventos masivos",
           "delitos contra la libertad y la integridad sexual en desarrollo del conflicto armado",
-          "perdida de bienes muebles o inmuebles"
+          "secuestro"
         ]
       },
       "meta": {
@@ -1580,11 +1580,11 @@
         "column": "sex",
         "mostly": 1.0,
         "value_set": [
-          "sin informacion",
           "lgbti",
-          "mujer",
+          "sin informacion",
           "intersexual",
-          "hombre"
+          "hombre",
+          "mujer"
         ]
       },
       "meta": {
@@ -1651,13 +1651,13 @@
         "column": "ethnic_group",
         "mostly": 1.0,
         "value_set": [
-          "ninguna",
-          "otro",
-          "rom",
           "indigena",
-          "afrocolombiano",
-          "raizal",
           "palenquero",
+          "raizal",
+          "ninguna",
+          "afrocolombiano",
+          "rom",
+          "otro",
           "mestizo"
         ]
       },
@@ -1725,19 +1725,19 @@
         "column": "age_range",
         "mostly": 1.0,
         "value_set": [
-          "14-26",
-          "sin informacion",
-          "6-11",
-          "29-60",
-          "0-5",
-          "60+",
-          "18-28",
-          "29-59",
-          "61-100",
-          "27-59",
-          "0-13",
+          "12-17",
           "60-110",
-          "12-17"
+          "6-11",
+          "27-59",
+          "14-26",
+          "0-13",
+          "sin informacion",
+          "0-5",
+          "61-100",
+          "18-28",
+          "29-60",
+          "29-59",
+          "60+"
         ]
       },
       "meta": {
@@ -1804,8 +1804,8 @@
         "column": "source",
         "mostly": 1.0,
         "value_set": [
-          "nacional (colombia)",
-          "cali"
+          "cali",
+          "nacional (colombia)"
         ]
       },
       "meta": {
@@ -1871,7 +1871,7 @@
   "meta": {
     "citations": [
       {
-        "citation_date": "2026-05-17T18:34:15.056633Z",
+        "citation_date": "2026-05-18T17:13:57.078887Z",
         "comment": "Created by effective Rule-Based Profiler of OnboardingDataAssistant with the configuration included.\n"
       }
     ],

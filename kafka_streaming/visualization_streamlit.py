@@ -62,20 +62,19 @@ if not buffer:
     st.rerun()
 
 df = pd.DataFrame(list(buffer))
+df = df.drop_duplicates()  
 
 # ensure numeric total_victim
 df["total_victim"] = pd.to_numeric(df["total_victim"], errors="coerce").fillna(0)
 
 # chart 1 — cumulative victim counter
-total_victims = int(df["total_victim"].sum())
 total_records = len(df)
 
 col1, col2 = st.columns(2)
 with col1:
     st.metric(
-        label="Total Victims (accumulated)",
-        value=f"{total_victims:,}",
-        delta=f"{total_records:,} records received",
+        label="Total Records Received",
+        value=f"{total_records:,}",
     )
 with col2:
     st.metric(
@@ -92,19 +91,19 @@ with col_left:
     st.subheader("Top 5 Departments by Victims")
     if "state_dept" in df.columns:
         top5 = (
-            df.groupby("state_dept", observed=True)["total_victim"]
-            .sum()
+            df.groupby("state_dept", observed=True)
+            .size()
             .nlargest(5)
-            .reset_index()
-            .sort_values("total_victim", ascending=True)
+            .reset_index(name="total_records")
+            .sort_values("total_records", ascending=True)
         )
         fig_bar = px.bar(
             top5,
-            x="total_victim",
+            x="total_records",
             y="state_dept",
             orientation="h",
-            labels={"total_victim": "Total Victims", "state_dept": "Department"},
-            color="total_victim",
+            labels={"total_records": "Total Records", "state_dept": "Department"},
+            color="total_records",
             color_continuous_scale="Reds",
         )
         fig_bar.update_layout(
