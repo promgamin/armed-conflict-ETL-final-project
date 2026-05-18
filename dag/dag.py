@@ -11,11 +11,12 @@ from scripts.dimensions import build_dimensions
 from scripts.load import load_to_mysql
 from kafka_streaming.producer import run
 
+#retry config, 2 attempts with a 2-minute gap between each
 default_args = {
     "retries": 2,
     "retry_delay": timedelta(minutes=2),
 }
-
+#Daily ETL process for reporting data on victims of armed conflict in Colombia
 with DAG(
     dag_id="dag_armed_conflict_victims",
     default_args=default_args,
@@ -27,8 +28,9 @@ with DAG(
     tags=["etl", "victims", "sdg16"],
 ) as dag:
 
-# Ingest 
+#Ingest tasks for both sources: SQLite and API
 
+#Read raw victims data from the local Cali SQLite database
     task_ingest_f1 = PythonOperator(
         task_id="ingest_source1_cali",
         python_callable=ingest_source1,
@@ -38,6 +40,7 @@ with DAG(
         },
     )
 
+#Retrieve records of victims from the national open-data API starting in 2012
     task_ingest_f2 = PythonOperator(
         task_id="ingest_source2_api",
         python_callable=ingest_source2,
@@ -49,7 +52,9 @@ with DAG(
     )
 
 
-# Transformation 
+#transformation task
+
+#Clean and standardise the Cali dataset so it matches the shared schema
     task_transform_f1 = PythonOperator(
         task_id="transform_source1_cali",
         python_callable=transform_source1,
@@ -58,7 +63,7 @@ with DAG(
             "output_path": "/opt/airflow/data/processed/source1_transformed.parquet",
         },
     )
-
+#clean and standardise the API dataset so it matches the shared schema
     task_transform_f2 = PythonOperator(
         task_id="transform_source2_api",
         python_callable=transform_source2,
@@ -68,7 +73,7 @@ with DAG(
         },
     )
 
-# Concatenation 
+#Concatenation sources into a single dataset 
     task_concat = PythonOperator(
         task_id="concat_sources",
         python_callable=run_concat,
@@ -79,7 +84,7 @@ with DAG(
         },
     )
 
-# Validation
+#Run Great Expectations checks, pipeline stops here if data quality fails
     task_validate=PythonOperator(
         task_id="validate_great_expectations",
         python_callable=validate_all,
@@ -89,7 +94,7 @@ with DAG(
         },
     )
 
-# build dimensions
+#Generate dimension tables (location, event type, date, etc) for the star schema
     task_dimensions=PythonOperator(
         task_id="build_dimensions",
         python_callable=build_dimensions,
@@ -99,7 +104,7 @@ with DAG(
         },
     )
 
-# load
+#Upsert fact and dimension tables into MySQL
     task_load=PythonOperator(
         task_id="load_mysql",
         python_callable=load_to_mysql,
@@ -108,7 +113,7 @@ with DAG(
         },
     )
 
-# Kafka
+#Publish final records to Kafka so consumers get real-time updates
     task_kafka=PythonOperator(
         task_id="kafka_streaming",
         python_callable=run,
@@ -119,7 +124,7 @@ with DAG(
     )
     
 
-# Workflow 
+#Workflow 
 
     task_ingest_f1 >> task_transform_f1
     task_ingest_f2 >> task_transform_f2

@@ -16,7 +16,7 @@ logging.basicConfig(
 )
 log = logging.getLogger("kafka.producer")
 
-# env variables
+#kafka and MySQL connection settings from environment
 KAFKA_BOOTSTRAP_SERVERS = os.getenv("KAFKA_BOOTSTRAP_SERVERS", "kafka:9092")
 KAFKA_TOPIC             = os.getenv("KAFKA_TOPIC", "armed_conflict_metrics")
 MYSQL_HOST              = os.getenv("MYSQL_DW_HOST", "mysql_dw")
@@ -25,7 +25,7 @@ MYSQL_USER              = os.getenv("MYSQL_DW_USER", "etl_user")
 MYSQL_PASSWORD          = os.getenv("MYSQL_DW_PASSWORD", "etl_password")
 MYSQL_DB                = os.getenv("MYSQL_DW_DB", "dw_armed_conflict")
 
-# Query
+#pulls the full victim records joined across all dimension tables
 QUERY = """
 SELECT
     v.total_victim,
@@ -51,9 +51,7 @@ def json_serializer(obj):
     if isinstance(obj, date):
         return obj.isoformat()
     raise TypeError(f"Type not serializable: {type(obj)}")
-
-
-# mysql connection 
+#connects to MySQL with retries in case the service isn't ready yet
 def get_mysql_connection(retries=5, wait=5):
     for attempt in range(1, retries + 1):
         try:
@@ -75,7 +73,7 @@ def get_mysql_connection(retries=5, wait=5):
     sys.exit(1)
 
 
-# kafka connection 
+#connects to Kafka with retries in case the broker isn't ready yet
 def get_kafka_producer(retries=5, wait=5):
     for attempt in range(1, retries + 1):
         try:
@@ -97,7 +95,7 @@ def get_kafka_producer(retries=5, wait=5):
     sys.exit(1)
 
 
-# delivery callbacks
+#Log delivery success every 500 messages and report errors immediately
 def on_send_success(record_metadata, idx):
     if idx % 500 == 0:
         log.info(
@@ -109,7 +107,7 @@ def on_send_success(record_metadata, idx):
 def on_send_error(exc, idx):
     log.error("Error sending message #%d: %s", idx, exc)
 
-
+#Reads from MySQL in batches and publishes each row to the Kafka topic
 def run(delay=0.05, batch_size=50):
     log.info("Kafka Producer started")
     log.info("Topic: %s | Delay: %ss | Batch size: %d", KAFKA_TOPIC, delay, batch_size)
@@ -150,6 +148,7 @@ def run(delay=0.05, batch_size=50):
         log.error("Kafka error: %s", exc)
         errors += 1
     finally:
+           #close all connections and log final stats
         producer.flush()
         producer.close()
         cursor.close()
@@ -168,8 +167,8 @@ def run(delay=0.05, batch_size=50):
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Kafka producer - armed conflict metrics")
-    parser.add_argument("--delay",      type=float, default=0.05, help="Delay in seconds between messages (default: 0.05)")
-    parser.add_argument("--batch-size", type=int,   default=50,   help="Rows per fetchmany/flush cycle (default: 50)")
+    parser.add_argument("delay",      type=float, default=0.05, help="Delay in seconds between messages (default: 0.05)")
+    parser.add_argument("batch-size", type=int,   default=50,   help="Rows per fetchmany/flush cycle (default: 50)")
     return parser.parse_args()
 
 if __name__ == "__main__":

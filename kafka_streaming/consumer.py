@@ -15,7 +15,7 @@ logging.basicConfig(
 )
 log = logging.getLogger("kafka.consumer")
 
-# env variables
+#Kafka connection settings from environment
 KAFKA_BOOTSTRAP_SERVERS = os.getenv("KAFKA_BOOTSTRAP_SERVERS", "kafka:9092")
 KAFKA_TOPIC             = os.getenv("KAFKA_TOPIC", "armed_conflict_metrics")
 KAFKA_GROUP_ID          = os.getenv("KAFKA_GROUP_ID", "armed_conflict_group")
@@ -25,7 +25,7 @@ def json_deserializer(data):
     return json.loads(data.decode("utf-8"))
 
 
-# kafka consumer 
+#connects to Kafka with retries in case the broker isn't ready yet 
 def get_kafka_consumer(retries=5, wait=5):
     for attempt in range(1, retries + 1):
         try:
@@ -57,7 +57,7 @@ def format_record(record: dict) -> str:
         f"source={record.get('source', 'N/A')}"
     )
 
-
+#Main loop, polls Kafka and processes each message, writing to file if needed
 def run(output_path=None):
     log.info("Kafka Consumer started")
     log.info("Topic: %s | Group: %s | Offset: latest", KAFKA_TOPIC, KAFKA_GROUP_ID)
@@ -73,7 +73,7 @@ def run(output_path=None):
         log.info("Writing consumed messages to: %s", output_path)
 
     try:
-        # poll() keeps the consumer alive 
+#poll() keeps the consumer alive 
         while True:
             message_batch = consumer.poll(timeout_ms=1000) # timeout_ms=1000 wait up 1 second per poll cycle before returning empty
 
@@ -110,6 +110,7 @@ def run(output_path=None):
         log.error("Kafka error: %s", exc)
         errors += 1
     finally:
+    #close connections and log final stats
         consumer.close()
         if out_file:
             out_file.close()
@@ -127,5 +128,5 @@ def run(output_path=None):
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Kafka consumer - armed conflict metrics")
-    parser.add_argument("--output", type=str, default=None, help="Optional path to write consumed messages as JSONL")
+    parser.add_argument("output", type=str, default=None, help="Optional path to write consumed messages as JSONL")
     return parser.parse_args()
