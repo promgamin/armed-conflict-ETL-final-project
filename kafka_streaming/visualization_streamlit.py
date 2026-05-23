@@ -165,7 +165,7 @@ st.divider()
 st.subheader("Last 5 Records Received")
 display_cols = [
     "produced_at", "date_processing", "state_dept", "victimization_fact",
-    "sex", "ethnic_group", "age_range", "total_victim", "source",
+    "sex", "ethnic_group", "age_range",
 ]
 available_cols = [c for c in display_cols if c in df.columns]
 last5 = df[available_cols].tail(5).iloc[::-1].reset_index(drop=True)

@@ -30,10 +30,10 @@ def build_dimensions(input_path: str, output_dir: str):
         dim_act.parquet
         dim_location.parquet
         dim_date.parquet
-        fact_victims.parquet
+        victims.parquet
 
     Args:
-        input_path : Path to dataset_consolidated.parquet.
+        input_path : Path to dataset_final.parquet.
         output_dir : Directory where dimension parquets will be saved.
     """
     print("Reading consolidated dataset...")
@@ -42,51 +42,44 @@ def build_dimensions(input_path: str, output_dir: str):
 
     os.makedirs(output_dir, exist_ok=True)
 
-# Dimension tables
-    dim_person = make_dim(df, ["sex", "ethnic_group", "age_range"], "id_person")
-    dim_act    = make_dim(df, ["victimization_fact"], "id_act")
+    # dimension tables
+    dim_person   = make_dim(df, ["sex", "ethnic_group", "age_range"], "id_person")
+    dim_act      = make_dim(df, ["victimization_fact"], "id_act")
     dim_location = make_dim(df, ["state_dept"], "id_location")
 
-# Date dimension: one row per unique date_processing value
+    # date dimension: one row per unique date_processing value
     dim_date = (
         df[["date_processing", "year", "month"]]
         .drop_duplicates(subset=["date_processing"])
         .reset_index(drop=True)
     )
 
-# Resolve surrogate keys into the fact table 
+    # resolve surrogate keys into the fact table
     fact = df.copy()
     fact = fact.merge(dim_person,   on=["sex", "ethnic_group", "age_range"], how="left")
     fact = fact.merge(dim_act,      on=["victimization_fact"],               how="left")
     fact = fact.merge(dim_location, on=["state_dept"],                       how="left")
 
-# Keep only the columns that belong in the fact table
-    fact = fact[[
-        "id_person",
-        "id_act",
-        "id_location",
-        "date_processing",
-        "total_victim",
-        "source",
-    ]]
+    # keep only FK columns — no total_victim, no source
+    fact = fact[["id_person", "id_act", "id_location", "date_processing"]]
 
-# Drop rows where any FK is null (referential integrity)
+    # drop rows where any FK is null (referential integrity)
     before = len(fact)
     fact = fact.dropna(subset=["id_person", "id_act", "id_location", "date_processing"])
     dropped = before - len(fact)
     if dropped:
         print(f"Warning: {dropped} rows dropped due to null foreign keys")
 
-# Save parquets 
+    # save parquets
     dim_person.to_parquet(  f"{output_dir}/dim_person.parquet",   index=False)
     dim_act.to_parquet(     f"{output_dir}/dim_act.parquet",      index=False)
     dim_location.to_parquet(f"{output_dir}/dim_location.parquet", index=False)
     dim_date.to_parquet(    f"{output_dir}/dim_date.parquet",     index=False)
-    fact.to_parquet(        f"{output_dir}/victims.parquet", index=False)
+    fact.to_parquet(        f"{output_dir}/victims.parquet",      index=False)
 
-    print(f"dim_person    : {len(dim_person)} rows")
-    print(f"dim_act       : {len(dim_act)} rows")
-    print(f"dim_location  : {len(dim_location)} rows")
-    print(f"dim_date      : {len(dim_date)} rows")
-    print(f"victims  : {len(fact)} rows")
+    print(f"dim_person   : {len(dim_person)} rows")
+    print(f"dim_act      : {len(dim_act)} rows")
+    print(f"dim_location : {len(dim_location)} rows")
+    print(f"dim_date     : {len(dim_date)} rows")
+    print(f"victims      : {len(fact)} rows")
     print("Constructed dimensions")
