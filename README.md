@@ -68,7 +68,7 @@ armed-conflict-ETL-final-project/
 
 | Source | Type | Description | Records |
 |---|---|---|---|
-| Source 1 | SQLite DB | Victims from Cali (Open Data) | Local |
+| Source 1 | SQLite DB | Victims from Cali (Open Data) | 70,650 |
 | Source 2 | REST API | National victims — datos.gov.co (ynab-fjc9) | ~1,854,370 |
 
 After extraction, transformation, and aggregation both sources are merged into a single dataset of 103,507 rows.
